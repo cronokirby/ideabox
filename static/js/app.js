@@ -5570,7 +5570,15 @@ require.register("elm/elm-stuff/packages/elm-lang/virtual-dom/2.0.4/tests/TestCa
 
 });
 
-;require.alias("process/browser.js", "process");require.register("___globals___", function(exports, require, module) {
+;require.register("js/app.js", function(exports, require, module) {
+'use strict';
+
+var elmDiv = document.getElementById('elm-main');
+var elmApp = Elm.Main.embed(elmDiv);
+
+});
+
+require.alias("process/browser.js", "process");require.register("___globals___", function(exports, require, module) {
   
 });})();require('___globals___');
 

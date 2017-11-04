@@ -3,8 +3,9 @@ module Web.App
   ( runApp )
 where
 
-import           Control.Monad.Logger        (runStdoutLoggingT)
-import           Database.Persist.Postgresql hiding (delete, get)
+import           Control.Monad.Logger          (runStdoutLoggingT)
+import           Database.Persist.Postgresql   hiding (delete, get)
+import           Network.Wai.Middleware.Static
 import           Web.Spock
 import           Web.Spock.Config
 
@@ -26,5 +27,6 @@ runApp = do
 
 app :: Api
 app = do
-    get "hello" $ do
-        text $ "Hello World!"
+    middleware (staticPolicy (addBase "static"))
+    get "" $
+        file "" "static/app.html"
