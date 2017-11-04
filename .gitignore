@@ -1,1 +1,4 @@
 .stack-work/
+assets/node_modules/
+assets/elm/elm-stuff/
+assets/elm/vendor/
