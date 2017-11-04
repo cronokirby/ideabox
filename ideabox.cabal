@@ -12,8 +12,17 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
+  exposed-modules:     Web.App
+                     , Model.CoreTypes
   build-depends:       base >= 4.7 && < 5
+                     , aeson
+                     , mtl
+                     , monad-logger
+                     , persistent
+                     , persistent-template
+                     , persistent-postgresql
+                     , Spock
+                     , text
   default-language:    Haskell2010
 
 executable ideabox-exe

@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import           Web.App
 
 main :: IO ()
-main = someFunc
+main = runApp
