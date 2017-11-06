@@ -27,7 +27,7 @@ runApp = do
     pool <- runStdoutLoggingT (createPostgresqlPool connStr 10)
     runStdoutLoggingT (runSqlPool (runMigration migrateCore) pool)
     spockCfg <- defaultSpockCfg () (PCPool pool) ()
-    runSpock 1337 (spock spockCfg app)
+      runSpock 1337 (spock spockCfg app)
   where
     connStr = "host=localhost dbname=ideabox2 user=postgres password=postgres port=5432"
 
@@ -62,6 +62,6 @@ createIdea = do
 
 
 
-{- Some Util stuff -}
+-- Some Util stuff
 runSQL :: (HasSpock m, SpockConn m ~ SqlBackend) => SqlPersistT (NoLoggingT (ResourceT IO)) a -> m a
 runSQL action = runQuery $ runResourceT . runNoLoggingT . runSqlConn action
