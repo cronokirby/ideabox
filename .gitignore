@@ -2,3 +2,5 @@
 assets/node_modules/
 assets/elm/elm-stuff/
 assets/elm/vendor/
+static/css
+static/js

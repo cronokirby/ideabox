@@ -8,7 +8,6 @@ import           Control.Monad.Logger          (NoLoggingT, runNoLoggingT,
                                                 runStdoutLoggingT)
 import           Control.Monad.Trans.Resource  (ResourceT, runResourceT)
 import           Data.Aeson                    hiding (json)
-import           Data.Maybe                    (fromMaybe)
 import           Database.Persist.Postgresql   hiding (delete, get)
 import           Network.Wai.Middleware.Static
 import           Web.Spock
@@ -27,7 +26,7 @@ runApp = do
     pool <- runStdoutLoggingT (createPostgresqlPool connStr 10)
     runStdoutLoggingT (runSqlPool (runMigration migrateCore) pool)
     spockCfg <- defaultSpockCfg () (PCPool pool) ()
-      runSpock 1337 (spock spockCfg app)
+    runSpock 1337 (spock spockCfg app)
   where
     connStr = "host=localhost dbname=ideabox2 user=postgres password=postgres port=5432"
 
