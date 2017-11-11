@@ -26,6 +26,7 @@ library
                      , Spock
                      , resourcet
                      , text
+                     , jose
                      , wai-middleware-static
   default-language:    Haskell2010
 
