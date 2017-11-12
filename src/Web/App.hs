@@ -32,7 +32,7 @@ runApp = do
 
 app :: Api
 app = do
-    middleware (staticPolicy (addBase "static"))
+    middleware (staticPolicy (only [("css/app.css", "static/css/app.css"), ("js/app.js", "static/js/app.js")]))
     get "" $
         file "" "static/app.html"
     get "api/ideas" showIdeas
